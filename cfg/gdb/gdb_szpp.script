@@ -1,0 +1,11 @@
+target remote localhost:3333
+monitor reset halt
+monitor poll
+monitor flash probe 0
+monitor reset halt
+#monitor flash protect 0 0 11 off
+monitor flash write_image erase "/home/sajmon/Projects/STM32/szpp/Debug/szpp.elf"
+disconnect
+shell sleep 1
+target remote localhost:3333
+monitor soft_reset_halt
