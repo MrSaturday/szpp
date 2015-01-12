@@ -1,4 +1,5 @@
 Debug
+scripts/download/.download.*
 .settings
 .project
 .cproject
