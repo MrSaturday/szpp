@@ -15,7 +15,7 @@ public:
         gpioHandle(port),
         pin(pin)
     {
-        gpioHandle.init(pin);
+        gpioHandle.configure(hal::gpio::mode::out, pin);
     }
 
     void write()

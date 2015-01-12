@@ -10,15 +10,21 @@ namespace hal
 class gpio
 {
 public:
+    enum class mode : u8
+    {
+        out = 0x01
+    };
+
     gpio(u32 port)
     {
         enablePeripheralClock(port);
         regBank = calulateStartAddress(port);
     }
 
-    void init(u32 pin)
+    void configure(mode m, u32 pin)
     {
-        regBank->MODER |= 0x01 << (2*pin);
+        (void)m;
+        regBank->MODER |= static_cast<u8>(m) << (2*pin);
     }
 
     void setPin(u32 pin)
